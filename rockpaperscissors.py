@@ -7,11 +7,28 @@ computerCount = 0
 
 def getValidHumanPlay( low, high ):
 	#ask for input from the user and store it in a variable - "Enter 0 for Rock, 1 for Paper, 2 for Scissors"
+
+	human_play = int(input("Please ener 0 for ROCK, 1 for PAPER or 2 for SCISSORS"))
 	#validate the players' input to make sure it is inbetween 0 and 2. Store it in a Boolean variable
+	if human_play >= low and human_play <= high:
+		number_entered = True
+	else:
+		number_entered = False
+		print("You did not enter a number 1, 2 or 3")
 	#using a while loop, if the input for the user is incorrect, ask them for another input and check again if it is valid using a conditional statement. Update Boolean variable
-	
+	while number_entered == False:
+		human_play = int(input("Please ener 0 for ROCK, 1 for PAPER or 2 for SCISSORS"))
+		if human_play >= low and human_play <= high:
+			number_entered = True
+		else:
+			number_entered = False
+		print("You did not enter a number 1, 2 or 3")
 	#return the input from the user when it is valid
-	return 0 #remove this line when you start coding
+	return human_play
+
+	
+	
+	
 
 def getPlay( human, plays ):
 	#create a Boolean variable that checks whether to keep checking for plays or not
