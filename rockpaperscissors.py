@@ -8,7 +8,7 @@ computerCount = 0
 def getValidHumanPlay( low, high ):
 	#ask for input from the user and store it in a variable - "Enter 0 for Rock, 1 for Paper, 2 for Scissors"
 
-	human_play = int(input("Please ener 0 for ROCK, 1 for PAPER or 2 for SCISSORS"))
+	human_play = int(input("Please ener 0 for ROCK, 1 for PAPER or 2 for SCISSORS: "))
 	#validate the players' input to make sure it is inbetween 0 and 2. Store it in a Boolean variable
 	if human_play >= low and human_play <= high:
 		number_entered = True
@@ -45,22 +45,6 @@ def getPlay( human, plays ):
 	return humanPlay
 	return computerPlay
 
-	
-
-
-
-def checkWinner( play, plays, humanCount, computerCount ):
-	#create a variable called result and have it equal play at index 0 minus play at index 1
-	#using an if-statement, check if the variable result is in humanWins
-		#increment humanCount by 1
-		#print off a message that says "Human won with" followed by their plays "beating" followed by the plays of the computer. This uses Collections that is being passed to the function. Play around with play and plays variable and see what values are inside each
-	#else
-		#increment computerCount by 1
-		#print off a message that says "Computer won with" followed by their plays "beating" followed by the plays of the computer. This uses Collections that is being passed to the function. Play around with play and plays variable and see what values are inside each
-
-	#return humanCount and computerCount
-	return 0 #remove this line when you start coding
-
 
 ### Beginning of Main
 
@@ -70,9 +54,35 @@ keepPlaying = True
 
 while keepPlaying:
 	#create a variable called play and call the getPlay function, sending human and plays variable
-	#using humanCount and computerCount, call the checkWinner function and send the variables: play, plays, humanCount, computerCount as parameters
-	#using the keepPlaying variable do a conditional statement check that computerCount is less than 3 and humanCount is less than 3
+	play = getPlay(human, plays)
+	#finding the result
+	result = humanPlay - computerPlay
+	if result in humanWins:
+		#add 1 to the human side
+		humanCount += 1
+		#print off winning message
+		print(human, "won by playing ", plays[humanPlay], ",which beat ", plays[computerPlay])
+	#to check for a tie
+	elif result == 0:
+		print("There has been a tie, both picked ", plays[humanPlay])
+	else:
+		#if the computer wins, add 1 to its score
+		computerCount += 1
+		#print winning message for computer
+		print("Computer won by playing ", plays[computerPlay], ", which beat", plays[humanPlay])
+	#print the score as of now
+	print(humanCount, computerCount)
+	#check if each score is less than 3, end game if one of them reaches 3 or more
+	if computerCount >= 3 or humanCount >= 3:
+		keepPlaying = False
+
 
 #create an if-statement (not inside the while loop) that checks if the human has won 3 times
+if humanCount == 3:
+	
 	#if the human has won 3 times declare that they have won the match and display humanCount to computerCount
+	print(human, "has won the full game: ", humanCount, "to", computerCount)
 #else if the computer has won, declare they have won the match and display computerCount to humanCount
+else:
+	print("Computer has won the full game:", computerCount, "to", humanCount)
+
