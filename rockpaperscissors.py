@@ -1,5 +1,6 @@
+#imoprot random to generate computer plays
 import random
-
+#set beginnig variables and lists
 plays = ["ROCK","PAPER","SCISSORS"]
 humanWins = [-2, 1]
 humanCount = 0
@@ -9,13 +10,13 @@ def getValidHumanPlay( low, high ):
 	#ask for input from the user and store it in a variable - "Enter 0 for Rock, 1 for Paper, 2 for Scissors"
 
 	human_play = int(input("Please ener 0 for ROCK, 1 for PAPER or 2 for SCISSORS: "))
-	#validate the players' input to make sure it is inbetween 0 and 2. Store it in a Boolean variable
+	#validate the players input to make sure it is in between 0 and 2. 
 	if human_play >= low and human_play <= high:
 		number_entered = True
 	else:
 		number_entered = False
 		print("You did not enter a number 1, 2 or 3")
-	#using a while loop, if the input for the user is incorrect, ask them for another input and check again if it is valid using a conditional statement. Update Boolean variable
+	#using a while loop, if the input for the user is incorrect, redo the first few steps and reenter a play
 	while number_entered == False:
 		human_play = int(input("Please ener 0 for ROCK, 1 for PAPER or 2 for SCISSORS"))
 		if human_play >= low and human_play <= high:
@@ -48,8 +49,10 @@ def getPlay( human, plays ):
 
 ### Beginning of Main
 
+#enter users name to be used during game
 human = input( "Enter your name ").upper()
 
+#introduce new boolean variable
 keepPlaying = True
 
 while keepPlaying:
